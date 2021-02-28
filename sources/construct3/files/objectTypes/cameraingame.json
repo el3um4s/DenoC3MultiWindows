@@ -1,0 +1,62 @@
+{
+	"name": "CameraInGame",
+	"plugin-id": "Sprite",
+	"sid": 364605209103566,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "CameraName",
+			"type": "string",
+			"desc": "",
+			"sid": 890193328635600
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "scrollto",
+			"name": "ScrollTo",
+			"sid": 383545567104559
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 320,
+						"height": 184,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1691149,
+						"collisionPoly": {
+							"points": [
+								0.109375,
+								0,
+								0.890625,
+								0,
+								0.890625,
+								1,
+								0.109375,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 579127949109384,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

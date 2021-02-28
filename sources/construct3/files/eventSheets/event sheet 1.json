@@ -1,0 +1,597 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "WindowName",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 255685081289043
+		},
+		{
+			"eventType": "variable",
+			"name": "ScreenWidth",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 342680799167961
+		},
+		{
+			"eventType": "variable",
+			"name": "ScreenHeight",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 824866358526585
+		},
+		{
+			"eventType": "variable",
+			"name": "Camera",
+			"type": "string",
+			"initialValue": "-",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 238628408281373
+		},
+		{
+			"eventType": "variable",
+			"name": "CameraX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 695700853886283
+		},
+		{
+			"eventType": "variable",
+			"name": "CameraY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 660385046884425
+		},
+		{
+			"eventType": "variable",
+			"name": "Message",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 727403640422096
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 262169102125980
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"script": "runtime.globalVars.Camera = cameraNameStarter;\ndocument.title = `MultiWindows - ${cameraNameStarter}`;\nwindow.addEventListener('beforeunload', async (e) => {\n\te.preventDefault();\n\truntime.callFunction(\"closeALL\");\n});"
+				}
+			],
+			"sid": 761737072938919,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "CameraInGame",
+							"sid": 697274417032409,
+							"parameters": {
+								"instance-variable": "CameraName",
+								"comparison": 0,
+								"value": "Camera"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "CameraInGame",
+							"sid": 645615644621828,
+							"behaviorType": "ScrollTo",
+							"parameters": {
+								"state": "enabled"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 464411868473143,
+							"parameters": {
+								"variable": "ScreenHeight",
+								"value": "PlatformInfo.ScreenHeight"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 306267386476128,
+							"parameters": {
+								"variable": "ScreenWidth",
+								"value": "PlatformInfo.ScreenWidth"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 959969228995002,
+							"parameters": {
+								"variable": "WindowName",
+								"value": "Browser.Title"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 478619266711274,
+							"parameters": {
+								"variable": "CameraX",
+								"value": "CameraInGame.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 571217658096427,
+							"parameters": {
+								"variable": "CameraY",
+								"value": "CameraInGame.Y"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 674808238900169,
+							"parameters": {
+								"variable": "Message",
+								"value": "Functions.sendStartConfig"
+							}
+						},
+						{
+							"id": "connect",
+							"objectClass": "WebSocket",
+							"sid": 738389387079766,
+							"parameters": {
+								"url": "\"ws://localhost:8090\"",
+								"protocol-optional": "\"\""
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 528810193390260
+						},
+						{
+							"id": "send-text",
+							"objectClass": "WebSocket",
+							"sid": 949226230493215,
+							"parameters": {
+								"data": "Message"
+							}
+						}
+					],
+					"sid": 108678297331965
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 126253151997072,
+							"parameters": {
+								"variable": "Camera",
+								"comparison": 1,
+								"value": "\"MENU\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 187765678937395,
+							"behaviorType": "Platform",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "set-active",
+							"objectClass": "Platform",
+							"sid": 268768248583863,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "inactive"
+							}
+						}
+					],
+					"sid": 608553084146022
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 213557188033148,
+							"parameters": {
+								"variable": "Camera",
+								"comparison": 0,
+								"value": "\"MENU\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 599769217424235,
+							"behaviorType": "Platform",
+							"parameters": {
+								"state": "enabled"
+							}
+						},
+						{
+							"id": "set-active",
+							"objectClass": "Platform",
+							"sid": 206551536363900,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "inactive"
+							}
+						}
+					],
+					"sid": 941063777763542
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 274865464812406,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked",
+						"object-clicked": "ButtonClose"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "closeALL",
+					"sid": 166742775443149
+				}
+			],
+			"sid": 461428204478685
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-object-clicked",
+					"objectClass": "Mouse",
+					"sid": 332712803871144,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked",
+						"object-clicked": "ButtonPlay"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "play",
+					"sid": 607042014030792
+				}
+			],
+			"sid": 369807520322863
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "CameraInGame",
+					"sid": 893552982090723,
+					"parameters": {
+						"instance-variable": "CameraName",
+						"comparison": 0,
+						"value": "\"MENU\""
+					}
+				},
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 153670263708293,
+					"parameters": {
+						"interval-seconds": "1/24"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "sendCommonPlatformPosition",
+					"sid": 204998429510547,
+					"disabled": true
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 163646798063640,
+					"parameters": {
+						"data": "Functions.sendPlayerPosition"
+					}
+				}
+			],
+			"sid": 911891180542118
+		},
+		{
+			"functionName": "sendStartConfig",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "const action = \"CONFIGURE\";\nconst windowName = runtime.globalVars.WindowName;\nconst screenWidth = runtime.globalVars.ScreenWidth;\nconst screenHeight = runtime.globalVars.ScreenHeight;\nconst camera = runtime.globalVars.Camera;\nconst cameraX = runtime.globalVars.CameraX;\nconst cameraY = runtime.globalVars.CameraY;\nconst config = {windowName, screenWidth, screenHeight, camera, cameraX, cameraY }\nconst option = { config }\nconst target = \"SELF\";\nconst objMessage = {action, target, option};\nconst message = JSON.stringify(objMessage);\nruntime.setReturnValue(message);"
+				}
+			],
+			"sid": 884979665859915
+		},
+		{
+			"functionName": "sendPlayerPosition",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "const action = \"PLAYER POSITION\";\nconst playerX = runtime.objects.Player.getFirstInstance().x;\nconst playerY = runtime.objects.Player.getFirstInstance().y;\nconst player = {playerX, playerY }\nconst option = { player }\nconst target = \"ALL\";\nconst objMessage = {action, target, option};\nconst message = JSON.stringify(objMessage);\nruntime.setReturnValue(message);"
+				}
+			],
+			"sid": 547902930154382
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-message",
+					"objectClass": "WebSocket",
+					"sid": 252420445133947
+				}
+			],
+			"actions": [],
+			"sid": 890531340774582,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "MessageFromServer",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 398545777135393
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 907276102195590,
+							"parameters": {
+								"variable": "MessageFromServer",
+								"value": "WebSocket.MessageText"
+							}
+						},
+						{
+							"type": "script",
+							"script": "const messageTXT = localVars.MessageFromServer;\nconst message = JSON.parse(messageTXT);\n\nconst { action } = message;\n\nif ( action === \"PLAYER POSITION\" && cameraNameStarter != \"MENU\") {\n\t//console.log(\"PLAYER POSITION\")\n\tconst x = message.option.player.playerX;\n\tconst y = message.option.player.playerY;\n\truntime.objects.Player.getFirstInstance().x = x;\n\truntime.objects.Player.getFirstInstance().y = y;\n// \truntime.callFunction(\"SetPlayerPosition\", x, y);\n}"
+						}
+					],
+					"sid": 442291294085586
+				}
+			]
+		},
+		{
+			"functionName": "sendCommonPlatformPosition",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 674523374639964,
+			"disabled": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 258556252505677,
+							"parameters": {
+								"object": "Platform"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Platform",
+							"sid": 880703216418034,
+							"parameters": {
+								"instance-variable": "controlRemote"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 790803874471218,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "mess",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 917453545812652
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "script",
+									"script": "const action = \"PLATFORM POSITION\";\nconst platformInst = runtime.objects.Platform.getFirstPickedInstance();\nconst platformUID = platformInst.uid;\nconst platformX = platformInst.x;\nconst platformY = platformInst.y;\nconst platform = {platformUID, platformX, platformY }\nconst option = { platform }\nconst target = \"ALL\";\nconst objMessage = {action, target, option};\nconst message = JSON.stringify(objMessage);\nlocalVars.mess = message;"
+								}
+							],
+							"sid": 313565349143195,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "send-text",
+											"objectClass": "WebSocket",
+											"sid": 803302619350511,
+											"parameters": {
+												"data": "mess"
+											}
+										}
+									],
+									"sid": 168788683942835,
+									"disabled": true
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "closeALL",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "const action = \"CLOSE\";\nconst target = \"ALL\";\nconst option = {};\nconst objMessage = {action, target, option};\nconst message = JSON.stringify(objMessage);\nruntime.globalVars.Message = message;"
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 278389583236891,
+					"parameters": {
+						"data": "Message"
+					}
+				},
+				{
+					"id": "close",
+					"objectClass": "WebSocket",
+					"sid": 572001092002253
+				},
+				{
+					"id": "close",
+					"objectClass": "Browser",
+					"sid": 890929957838345
+				}
+			],
+			"sid": 403143612514750
+		},
+		{
+			"functionName": "testWS",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "const action = \"TEST\";\nconst target = \"SELF\";\nconst option = {message: \"HI!\"};\nconst objMessage = {action, target, option};\nconst message = JSON.stringify(objMessage);\nruntime.globalVars.Message = message;"
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 479139406866020,
+					"parameters": {
+						"data": "Message"
+					}
+				}
+			],
+			"sid": 347968455025173
+		},
+		{
+			"functionName": "play",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "const action = \"PLAY\";\nconst target = \"ALL\";\nconst objMessage = {action, target};\nconst message = JSON.stringify(objMessage);\nruntime.globalVars.Message = message;"
+				},
+				{
+					"id": "send-text",
+					"objectClass": "WebSocket",
+					"sid": 358473850791559,
+					"parameters": {
+						"data": "Message"
+					}
+				}
+			],
+			"sid": 841919659782908
+		}
+	],
+	"sid": 124752922645208
+}

@@ -1,0 +1,21 @@
+{
+	"name": "MultiWindows",
+	"main": "index.html",
+	"window": {
+		"title": "MultiWindows",
+		"width": 320,
+		"height": 184,
+		"resizable": false,
+		"icon": "www\\icons\\icon-512.png"
+	},
+	"chromium-args": "--ignore-gpu-blacklist",
+	"settings": {
+		"distribution-mode": "evergreen",
+		"enable-devtools": true
+	},
+	"messages": {
+		"install-webview2": "This app requires the Microsoft Edge WebView2 runtime. It will be downloaded and installed for you now.",
+		"downloading": "Downloading...",
+		"install-webview2-failed": "Failed to install the Microsoft Edge WebView2 runtime. Check that you have permission to install it, and that your Internet connection is working. Run the app again to try again."
+	}
+}

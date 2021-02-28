@@ -1,0 +1,38 @@
+{
+	"name": "Platform",
+	"plugin-id": "TiledBg",
+	"sid": 212282281458104,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "controlRemote",
+			"type": "boolean",
+			"desc": "",
+			"sid": 354545347727124
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 172764794670379
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 741475976667502
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 8,
+		"height": 8,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "png",
+		"exportQuality": 0.8,
+		"imageSpriteId": 8189014,
+		"useCollisionPoly": true
+	}
+}
